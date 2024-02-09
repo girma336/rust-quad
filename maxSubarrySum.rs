@@ -1,0 +1,17 @@
+fn max_subarray_sum(nums: &[i32]) -> i32 {
+    let mut max_sum = nums[0];
+    let mut current_sum = nums[0];
+
+    for &num in &nums[1..] {
+        current_sum = num.max(current_sum + num);
+        max_sum = max_sum.max(current_sum);
+    }
+
+    max_sum
+}
+
+fn main() {
+    let nums = &[1, -2, 3, 4, -1, 2, -5, 4];
+    let max_sum = max_subarray_sum(nums);
+    println!("Maximum subarray sum: {}", max_sum);
+}
